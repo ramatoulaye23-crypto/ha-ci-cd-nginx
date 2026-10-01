@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Emploi du temps</title></head>
+<body>
+<h2>Bienvenue {{ user }}</h2>
+<a href="/logout">Deconnexion</a>
+<h3>Ajouter un cours</h3>
+<form method="POST">
+    <input type="text" name="matiere" placeholder="Matiere" required>
+    <input type="text" name="jour" placeholder="Jour" required>
+    <input type="text" name="heure" placeholder="Heure" required>
+    <button type="submit">Ajouter</button>
+</form>
+<h3>Emploi du temps</h3>
+<table border="1">
+<tr><th>Matiere</th><th>Jour</th><th>Heure</th><th></th></tr>
+{% for cours in emplois %}
+<tr>
+    <td>{{ cours.matiere }}</td>
+    <td>{{ cours.jour }}</td>
+    <td>{{ cours.heure }}</td>
+    <td><a href="/supprimer/{{ cours.id }}">Supprimer</a></td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
